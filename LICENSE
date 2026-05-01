@@ -19,3 +19,36 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
+本数据集（Credit Card Fraud Detection）的使用须遵守以下条款：
+
+1. 数据库授权：Open Database License (ODbL) v1.0
+   - 数据库及其结构、编排、索引均受 ODbL 保护。
+   - 数据库内容（交易记录、特征值、分类标签等）亦遵循 ODbL 的“内容”授权条款。
+   - 完整许可文本见：https://opendatacommons.org/licenses/odbl/1.0/
+
+2. 数据来源与版权归属
+   数据集名称：Credit Card Fraud Detection
+   数据提供方：Machine Learning Group - ULB (Université Libre de Bruxelles) 及合作者 Worldline
+   原始发布平台：Kaggle (https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
+   数据收集与分析：Worldline 与 ULB Machine Learning Group 的研究合作
+
+3. 必引文献（学术使用请引用以下至少一项主要工作）
+   [1] Andrea Dal Pozzolo, Olivier Caelen, Reid A. Johnson and Gianluca Bontempi.
+       Calibrating Probability with Undersampling for Unbalanced Classification.
+       In Symposium on Computational Intelligence and Data Mining (CIDM), IEEE, 2015.
+   [2] Dal Pozzolo, Andrea; Caelen, Olivier; Le Borgne, Yann-Ael; Waterschoot, Serge; Bontempi, Gianluca.
+       Learned lessons in credit card fraud detection from a practitioner perspective.
+       Expert systems with applications, 41(10):4915-4928, 2014, Pergamon.
+   [3] Dal Pozzolo, Andrea; Boracchi, Giacomo; Caelen, Olivier; Alippi, Cesare; Bontempi, Gianluca.
+       Credit card fraud detection: a realistic modeling and a novel learning strategy.
+       IEEE transactions on neural networks and learning systems, 29(8):3784-3797, 2018, IEEE.
+   （完整文献列表参见数据集原始描述）
+
+4. 附加说明
+   - 该数据集包含 PCA 转换后的匿名特征，原始特征因保密原因无法提供。
+   - 类别高度不平衡（欺诈交易占 0.172%），推荐使用精确率-召回率曲线下面积（AUPRC）评估模型。
+   - 若对数据集进行修改、扩展或以其为基础发布衍生作品，必须同样以 ODbL 授权发布，并保留本声明。
+
+使用本数据集即表示您已阅读并同意上述许可条款。
