@@ -78,7 +78,7 @@ Decision_tree-credit_card_fraud_detection/
 3. 打开 Jupyter Notebook：
 
    ```bash
-   jupyter notebook credit_card_fraud_detection-checkpoint.ipynb
+   jupyter notebook Decision_tree-credit_card_fraud_detection.ipynb
    ```
 
 4. 按顺序运行所有代码单元格
