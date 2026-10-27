@@ -1,135 +1,129 @@
-# 决策树-信用卡欺诈检测
+# Credit Card Fraud Detection with Decision Trees
 
-信用卡欺诈是金融安全领域的重要问题。本项目通过机器学习中的决策树算法，构建了一个能够识别异常交易行为的分类模型。项目涵盖了完整的数据科学流程，包括数据探索、特征分析、模型训练、超参数优化和模型评估。
+Credit card fraud is a major problem in financial security. This project uses decision trees to build a classifier that flags abnormal transactions. It covers the full data science workflow: data exploration, feature analysis, model training, hyperparameter tuning, and evaluation.
 
-数据集地址：https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+Dataset: https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
-## 数据集说明
+## Dataset
 
-项目使用经典的信用卡欺诈检测数据集（creditcard.csv），包含以下特征：
+The project uses the classic credit card fraud dataset (`creditcard.csv`). Features:
 
-- **交易频率 (Time)**：距离第一笔交易的时间间隔
-- **V1-V28**：通过PCA降维处理后的特征（保护用户隐私）
-- **交易金额 (Amount)**：交易金额
-- **类别标签 (Class)**：0表示正常交易，1表示欺诈交易
+- **Time** — seconds elapsed since the first transaction
+- **V1–V28** — features produced by PCA (anonymized to protect user privacy)
+- **Amount** — transaction amount
+- **Class** — label: 0 for normal, 1 for fraud
 
-数据集特点：
+Dataset characteristics:
 
-- 总样本数：284,807 条交易记录
-- 正常交易：284,315 条（99.83%）
-- 欺诈交易：492 条（0.17%）
-- 严重类别不平衡问题
+- Total: 284,807 transactions
+- Normal: 284,315 (99.83%)
+- Fraud: 492 (0.17%)
+- Severe class imbalance
 
-## 项目结构
+## Project Structure
 
 ```
 Decision_tree-credit_card_fraud_detection/
-├── Decision_tree-credit_card_fraud_detection.ipynb   # 代码笔记本
-└── creditcard.csv                                    # 信用卡交易数据集（已存到Releases）
+├── Decision_tree-credit_card_fraud_detection.ipynb   # notebook
+└── creditcard.csv                                    # dataset (stored in Releases)
 ```
 
-## 主要功能
+## Main Features
 
-### 1. 数据探索与可视化
+### 1. Data Exploration and Visualization
 
-- 类别分布分析（正常交易 vs 欺诈交易）
+- Class distribution (normal vs. fraud)
+- Transaction amount distribution comparison
+- Transaction time distribution
+- Feature correlation visualization (V1 vs. V2 scatter plot)
 
-- 交易金额分布对比
+### 2. Model Training and Tuning
 
-- 交易时间分布分析
+Three decision tree models are trained:
 
-- 特征相关性可视化（V1 vs V2 散点图）
-
-### 2. 模型训练与优化
-
-项目实现了三种决策树模型：
-
-| 模型           | 特点                    | 适用场景       |
+| Model | Characteristics | Use case |
 | -------------- | ----------------------- | -------------- |
-| 基础决策树     | 无限制深度              | 基准对比       |
-| 限制深度决策树 | max_depth=5             | 防止过拟合     |
-| 类别平衡决策树 | class_weight='balanced' | 处理类别不平衡 |
+| Baseline decision tree | unlimited depth | baseline comparison |
+| Depth-limited decision tree | max_depth=5 | prevent overfitting |
+| Class-balanced decision tree | class_weight='balanced' | handle class imbalance |
 
-### 3. 超参数调优
+### 3. Hyperparameter Tuning
 
-使用 GridSearchCV 进行网格搜索，优化参数包括：
+GridSearchCV is used to search over:
 
-- `max_depth`: 树的最大深度 [3, 5, 7, 10]
-- `min_samples_split`: 内部节点再划分所需最小样本数 [10, 20, 50]
-- `min_samples_leaf`: 叶子节点最小样本数 [5, 10, 20]
-- `class_weight`: 类别权重 ['balanced', None]
+- `max_depth`: maximum tree depth [3, 5, 7, 10]
+- `min_samples_split`: minimum samples required to split an internal node [10, 20, 50]
+- `min_samples_leaf`: minimum samples per leaf [5, 10, 20]
+- `class_weight`: class weights ['balanced', None]
 
-### 4. 模型评估
+### 4. Evaluation
 
-- **准确率 (Accuracy)**
-- **精确率 (Precision)**
-- **召回率 (Recall)**
-- **F1分数 (F1-Score)**
-- **AUC-ROC 曲线**
-- **混淆矩阵**
-- **特征重要性分析**
+- Accuracy
+- Precision
+- Recall
+- F1 score
+- AUC-ROC
+- Confusion matrix
+- Feature importance
 
-## 安装与使用
+## Install and Use
 
-1. 克隆或下载本项目
-
-2. 确保数据集 `creditcard.csv` 位于项目根目录
-
-3. 打开 Jupyter Notebook：
+1. Clone or download the project.
+2. Make sure `creditcard.csv` is in the project root.
+3. Open the notebook:
 
    ```bash
    jupyter notebook Decision_tree-credit_card_fraud_detection.ipynb
    ```
 
-4. 按顺序运行所有代码单元格
+4. Run all cells in order.
 
-## 模型结果
+## Results
 
-经过超参数优化后的最佳模型表现：
+Performance of the tuned model:
 
-- **最佳参数组合**：根据网格搜索确定
-- **AUC-ROC**：约 0.90+
-- **Average Precision**：约 0.45+
+- **Best parameters**: determined by grid search
+- **AUC-ROC**: about 0.90+
+- **Average Precision**: about 0.45+
 
-决策树模型能够有效识别欺诈交易，同时保持较好的可解释性。
+The decision tree model can catch fraudulent transactions reasonably well while staying interpretable.
 
-## 可视化输出
+## Visualization Output
 
-项目生成以下可视化图表：
+The project produces:
 
-1. **data_exploration.png**：数据分布和特征分析
-2. **decision_tree_structure.png**：决策树结构可视化
-3. **model_evaluation.png**：ROC曲线、混淆矩阵等评估指标
+1. **data_exploration.png** — data distribution and feature analysis
+2. **decision_tree_structure.png** — decision tree structure
+3. **model_evaluation.png** — ROC curve, confusion matrix, and other evaluation metrics
 
-## 技术要点
+## Technical Notes
 
-### 处理类别不平衡
+### Handling Class Imbalance
 
-- 使用 `class_weight='balanced'` 自动调整类别权重
-- 采用 PR-AUC 作为网格搜索的评分标准
+- `class_weight='balanced'` adjusts class weights automatically
+- PR-AUC is used as the scoring metric for grid search
 
-### 防止过拟合
+### Preventing Overfitting
 
-- 限制决策树最大深度
-- 设置最小样本分割和叶子节点参数
+- Limit the maximum tree depth
+- Set minimum samples for splits and leaves
 
-### 可解释性
+### Interpretability
 
-- 决策树模型具有良好的可解释性
-- 可导出特征重要性，理解模型决策依据
+- Decision trees are interpretable
+- Feature importance can be exported to understand the model's decisions
 
-## 许可证
+## License
 
-本项目使用MIT协议开源
-
----
-
-## 作者信息
-
-**谙弆悕博士（Ailan Anjuxi）**
-
-- 📧 邮箱：anjuxi.ME@outlook.com
-- 📞 SIP电话：sip:anjuxi@sip.linphone.org
+MIT
 
 ---
 
+## Author
+
+**Dr. Ailan Anjuxi (谙弆悕)**
+
+- Email: anjuxi.ME@outlook.com
+- SIP: sip:anjuxi@sip.linphone.org
+
+---
